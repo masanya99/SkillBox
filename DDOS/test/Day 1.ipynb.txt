@@ -1,0 +1,105 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import random"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class PasswordGenerator:\n",
+    "    '''CONSTANTS'''\n",
+    "    digits_alphabet = '1234567890'\n",
+    "    letters_alphabet = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'\n",
+    "    specsymbols_aphabet = '.,/?!@#$%^&*():;\\'\"|\\\\'\n",
+    "    \n",
+    "    '''DEFAULT FUNCTION'''\n",
+    "    def __init__(   self,length= 16,\n",
+    "                    use_letters = True,\n",
+    "                    use_digits = True,\n",
+    "                    use_specsymbols = False):\n",
+    "        self.length = length\n",
+    "        self.use_letters = use_letters\n",
+    "        self.use_digits = use_digits\n",
+    "        self.use_specsymbols = use_specsymbols\n",
+    "        print('Init:',length,use_letters,use_digits,use_specsymbols)\n",
+    "    \n",
+    "    '''PASSWORD GENERATOR'''\n",
+    "    def generate_password(self):\n",
+    "        alphabet = ''\n",
+    "        if self.use_letters:\n",
+    "            alphabet+= self.letters_alphabet\n",
+    "        if self.use_digits:\n",
+    "            alphabet+= self.digits_alphabet\n",
+    "        if self.use_specsymbols:\n",
+    "            alphabet+= self.specsymbols_aphabet\n",
+    "        if not alphabet:\n",
+    "            print('Empty alphabet!')\n",
+    "            return\n",
+    "        \n",
+    "        password = ''\n",
+    "        for i in range(self.length):\n",
+    "            password+=random.choice(alphabet)\n",
+    "        return password       "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Init: 16 False False False\n",
+      "Empty alphabet!\n",
+      "None\n"
+     ]
+    }
+   ],
+   "source": [
+    "generator1 = PasswordGenerator(use_letters = False,\n",
+    "                    use_digits = False,\n",
+    "                    use_specsymbols = False)\n",
+    "print(generator1.generate_password())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
